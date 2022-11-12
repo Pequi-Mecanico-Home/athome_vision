@@ -1,0 +1,14 @@
+FROM nvcr.io/nvidia/l4t-pytorch:r35.1.0-pth1.11-py3
+
+RUN git clone --recursive https://github.com/open-mmlab/mmfashion.git /mmfashion
+
+COPY /annotations/Anno /mmfashion/data/Attr_Predict/Anno_fine
+WORKDIR /mmfashion
+
+
+RUN python3 -m pip install matplotlib mmcv scikit-image scikit-learn flake8 isort yapf
+RUN python3 -m pip install -e .
+
+RUN pip install gdown
+
+RUN mkdir checkpoint && gdown 1zsgxJAkdumpw4uDkapb1Ulq-aG1Hwz45 -O checkpoint/resnet50.pth
