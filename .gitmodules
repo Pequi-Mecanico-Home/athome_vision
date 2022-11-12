@@ -1,0 +1,3 @@
+[submodule "fashion_features"]
+	path = fashion_features
+	url = git@github.com:Pequi-Mecanico-Home/fashion_features.git
